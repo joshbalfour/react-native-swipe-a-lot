@@ -137,6 +137,7 @@ export default class SwipeALot extends Component {
       emitter,
       autoplay,
       onSetActivePage,
+      getCircleActiveStyle,
       ...props,
     } = this.props;
 
@@ -199,7 +200,8 @@ export default class SwipeALot extends Component {
         <Circles store={this.store} emitter={this.emitter}
           circleWrapperStyle={circleWrapperStyle}
           circleDefaultStyle={circleDefaultStyle}
-          circleActiveStyle={circleActiveStyle}>
+          circleActiveStyle={circleActiveStyle}
+          getCircleActiveStyle={getCircleActiveStyle}>
           {children}
         </Circles>
       </View>
