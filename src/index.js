@@ -58,7 +58,7 @@ export default class SwipeALot extends Component {
         page
       })
 
-      if (Platform.OS === 'android') {
+      if (false) {
         this.swiper.setPage(page)
       }
       else {
@@ -146,7 +146,7 @@ export default class SwipeALot extends Component {
           this.swipeToPage(page)
         }}>
         {(() => {
-          if (Platform.OS === 'ios') {
+          if (true) {
             return (
               <ScrollView
                 ref={(c) => this.swiper = c}
