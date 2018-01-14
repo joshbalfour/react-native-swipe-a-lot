@@ -70,7 +70,8 @@ class Circles extends Component {
                 style={[styles.circleDefault,
                   this.props.circleDefaultStyle,
                   i === selectedPage && styles.circleActive,
-                  i === selectedPage && this.props.circleActiveStyle]}>
+                  i === selectedPage && this.props.circleActiveStyle,
+                  i === selectedPage && this.props.getCircleActiveStyle ? this.props.getCircleActiveStyle(i) : null ]}>
                 </View>
               </View>
             </TouchableWithoutFeedback>
