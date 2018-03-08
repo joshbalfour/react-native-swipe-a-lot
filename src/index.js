@@ -49,7 +49,7 @@ export default class SwipeALot extends Component {
 
     this.store.dispatch({
       type: 'SET_ACTIVE_PAGE',
-      page: 0
+      page: this.props.initialPage || 0
     })
 
     this.swipeToPageListener = ({ page }) => {
