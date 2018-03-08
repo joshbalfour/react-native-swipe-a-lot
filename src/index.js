@@ -52,7 +52,7 @@ export default class SwipeALot extends Component {
       page: this.props.initialPage || 0
     })
 
-    this.swipeToPageListener = ({ page, animated = true }) => {
+    this.swipeToPageListener = ({ page, disableAnimation }) => {
       this.store.dispatch({
         type: 'SET_ACTIVE_PAGE',
         page
@@ -65,7 +65,7 @@ export default class SwipeALot extends Component {
         const { width } = this.store.getState()
         this.swiper.scrollTo({
           x: page * width,
-          animated,
+          animated: !disableAnimation,
         })
       }
 
@@ -111,8 +111,8 @@ export default class SwipeALot extends Component {
     return page
   }
 
-  swipeToPage(page, animated) {
-    this.emitter.emit('swipeToPage', { page, animated })
+  swipeToPage(page, disabledAnimation) {
+    this.emitter.emit('swipeToPage', { page, disabledAnimation })
   }
 
   static get propTypes() {
@@ -145,7 +145,7 @@ export default class SwipeALot extends Component {
     return (
       <View style={[wrapperStyle, {flex: 1}]} onLayout={() => {
           const page = this.getPage()
-          this.swipeToPage(page, false)
+          this.swipeToPage(page, true)
         }}>
         {(() => {
           if (true) {
