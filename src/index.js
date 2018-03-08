@@ -7,6 +7,7 @@ import ReactNative, {
   View,
   ViewPagerAndroid,
   ViewPropTypes,
+  Dimensions,
 } from 'react-native'
 import {PropTypes} from 'prop-types'
 
@@ -49,10 +50,10 @@ export default class SwipeALot extends Component {
 
     this.store.dispatch({
       type: 'SET_ACTIVE_PAGE',
-      page: 0
+      page: this.props.initialPage || 0
     })
 
-    this.swipeToPageListener = ({ page }) => {
+    this.swipeToPageListener = ({ page, disableAnimation }) => {
       this.store.dispatch({
         type: 'SET_ACTIVE_PAGE',
         page
@@ -63,8 +64,10 @@ export default class SwipeALot extends Component {
       }
       else {
         const { width } = this.store.getState()
+
         this.swiper.scrollTo({
-          x: page * width
+          x: page * (width || Dimensions.get('window').width),
+          animated: !disableAnimation,
         })
       }
 
@@ -110,8 +113,8 @@ export default class SwipeALot extends Component {
     return page
   }
 
-  swipeToPage(page) {
-    this.emitter.emit('swipeToPage', { page })
+  swipeToPage(page, disableAnimation) {
+    this.emitter.emit('swipeToPage', { page, disableAnimation })
   }
 
   static get propTypes() {
@@ -144,7 +147,7 @@ export default class SwipeALot extends Component {
     return (
       <View style={[wrapperStyle, {flex: 1}]} onLayout={() => {
           const page = this.getPage()
-          this.swipeToPage(page)
+          this.swipeToPage(page, true)
         }}>
         {(() => {
           if (true) {
