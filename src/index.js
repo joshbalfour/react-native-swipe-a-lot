@@ -145,7 +145,7 @@ export default class SwipeALot extends Component {
     return (
       <View style={[wrapperStyle, {flex: 1}]} onLayout={() => {
           const page = this.getPage()
-          this.swipeToPage(page, true)
+          this.swipeToPage(page, false)
         }}>
         {(() => {
           if (true) {
