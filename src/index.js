@@ -141,12 +141,12 @@ export default class SwipeALot extends Component {
       autoplay,
       onSetActivePage,
       getCircleActiveStyle,
-      touchEnabled,
+      scrollEnabled,
       ...props,
     } = this.props;
 
-    if (touchEnabled === undefined) {
-      touchEnabled = true
+    if (scrollEnabled === undefined) {
+      scrollEnabled = true
     }
 
     return (
@@ -170,7 +170,7 @@ export default class SwipeALot extends Component {
                   const page = e.nativeEvent.contentOffset.x / width
                   this.swipeToPage(page)
                 }}
-                scrollEnabled={touchEnabled}
+                scrollEnabled={scrollEnabled}
                 onLayout={(event) => {
                   const {x, y, width, height} = event.nativeEvent.layout
                   this.store.dispatch({
