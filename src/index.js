@@ -126,12 +126,13 @@ export default class SwipeALot extends Component {
       children: PropTypes.any,
       emitter: PropTypes.object,
       autoplay: PropTypes.object,
+      scrollEnabled: PropTypes.bool,
       onSetActivePage: PropTypes.func,
     }
   }
 
   render() {
-    const {
+    let {
       wrapperStyle,
       circleWrapperStyle,
       circleDefaultStyle,
