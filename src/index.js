@@ -143,7 +143,7 @@ export default class SwipeALot extends Component {
       onSetActivePage,
       getCircleActiveStyle,
       scrollEnabled,
-      ...props,
+      ...props
     } = this.props;
 
     if (scrollEnabled === undefined) {
